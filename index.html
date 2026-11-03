@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rihsal Syarif | Mechanical Engineering & Robotics Portfolio</title>
+  <meta name="description" content="Portofolio Rihsal Syarif - Mahasiswa Mechanical Engineering & Robotics di President University. SolidWorks, Arduino, Python, MATLAB, dan Desain Kreatif.">
+  
+  <!-- Google Fonts: Orbitron, Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon SVG Data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2306b6d4'/><path d='M20 50 Q50 20 80 50 Q50 80 20 50' fill='%238b5cf6'/><circle cx='50' cy='50' r='18' fill='%23ffffff'/></svg>">
+</head>
+<body>
+  <!-- Ultra-Sleek Galactic Scroll Progress Line -->
+  <div class="cosmic-scroll-progress" id="cosmic-scroll-progress"></div>
+
+  <!-- Canvas Background for Interactive Starfield, Nebulae & Comets -->
+  <canvas id="space-canvas"></canvas>
+
+  <!-- Ambient Audio Indicator / Sci-Fi Audio Synthesizer Toggle -->
+  <div class="audio-control-wrapper">
+    <button id="audio-toggle" class="cosmic-btn-icon" aria-label="Toggle Cosmic Audio" title="Aktifkan Suara Kosmik (Web Audio API)">
+      <svg class="audio-icon-off" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+      <div class="audio-bars hidden" id="audio-bars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Cosmic Navigation Bar -->
+  <header class="navbar-container" id="navbar">
+    <nav class="navbar">
+      <a href="#hero" class="nav-logo">
+        <div class="logo-orbit">
+          <div class="logo-planet"></div>
+          <div class="logo-ring"></div>
+        </div>
+        <span class="logo-text">RIHSAL<span class="gradient-text">.SYARIF</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-menu">
+        <a href="#hero" class="nav-link active"><span class="nav-code">01.</span> Stasiun Utama</a>
+        <a href="#about" class="nav-link"><span class="nav-code">02.</span> About Me</a>
+        <a href="#resume" class="nav-link"><span class="nav-code">03.</span> CV / Resume</a>
+        <a href="#education" class="nav-link"><span class="nav-code">04.</span> Education</a>
+        <a href="#experience" class="nav-link"><span class="nav-code">05.</span> Experience</a>
+        <a href="#skills" class="nav-link"><span class="nav-code">06.</span> Technical Skill</a>
+        <a href="#projects" class="nav-link"><span class="nav-code">07.</span> Projects</a>
+        <a href="#contact" class="nav-link"><span class="nav-code">08.</span> Get In Touch</a>
+      </div>
+
+      <div class="nav-actions">
+        <button onclick="openCvModal(event)" class="btn btn-outline-glow btn-sm" title="Buka Dokumen CV / Resume Resmi">
+          <span>📄 CV / Resume</span>
+        </button>
+        <a href="#contact" class="btn btn-primary-cosmic btn-sm">
+          <span>Get In Touch</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION: Cosmic Launchpad -->
+    <section class="section hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="mission-status-badge">
+            <span class="status-radar-ping"></span>
+            <span class="status-dot"></span>
+            <span class="status-text">PRESIDENT UNIVERSITY // MECHANICAL & ROBOTICS</span>
+          </div>
+
+          <!-- Dynamic Live Telemetry Ticker Strip -->
+          <div class="hero-telemetry-strip">
+            <span class="telemetry-live-dot"></span>
+            <span class="telemetry-item" id="live-telemetry-clock">UTC 13:28:44</span>
+            <span class="telemetry-divider">/</span>
+            <span class="telemetry-item">ORBIT: 408 KM</span>
+            <span class="telemetry-divider">/</span>
+            <span class="telemetry-item">VEL: 27,600 KM/H</span>
+            <span class="telemetry-divider">/</span>
+            <span class="telemetry-item highlight">SYS: 100% NOMINAL</span>
+          </div>
+
+          <h1 class="hero-title">
+            Halo, Penjelajah!<br>
+            I'm <span class="gradient-text cosmic-glow-text" id="user-name-display">Rihsal Syarif</span>
+          </h1>
+
+          <h2 class="hero-subtitle">
+            <span class="prefix">Focus: </span>
+            <span class="typewriter-text" id="typewriter"></span>
+            <span class="typewriter-cursor">|</span>
+          </h2>
+
+          <p class="hero-description">
+            A good communicator who is friendly and able to adapt to various situations. Seeking opportunities to demonstrate dedication, technical competence, and high productivity across engineering, robotics, and creative problem solving.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary-cosmic">
+              <span class="btn-glint"></span>
+              <span>Jelajahi Misi & Karya</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="12 8 8 12 12 16 12 8"></polygon>
+                <line x1="16" y1="12" x2="8" y2="12"></line>
+              </svg>
+            </a>
+            <button onclick="openCvModal(event)" class="btn btn-outline-glow">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              <span>Lihat / Unduh CV</span>
+            </button>
+            <a href="#contact" class="btn btn-glass">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <!-- Live Mission Metrics HUD -->
+          <div class="hero-hud-stats">
+            <div class="hud-item">
+              <span class="hud-value" data-counter="1st">1st</span>
+              <span class="hud-label">FLS2N Prov & District Winner</span>
+            </div>
+            <div class="hud-divider"></div>
+            <div class="hud-item">
+              <span class="hud-value" data-counter="CAD">CAD</span>
+              <span class="hud-label">SolidWorks 3D Modeling</span>
+            </div>
+            <div class="hud-divider"></div>
+            <div class="hud-item">
+              <span class="hud-value" data-counter="100%">100%</span>
+              <span class="hud-label">Adaptive Learning</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Hologram / Planetarium Display -->
+        <div class="hero-visual" id="hero-visual-area">
+          <div class="hologram-stage" id="hologram-stage">
+            
+            <!-- Planetary Outer Coordinate Gyro Rings -->
+            <div class="celestial-gyro ring-outer"></div>
+            <div class="celestial-gyro ring-mid"></div>
+            
+            <!-- Elliptical Saturnian Rings (Back half, renders behind planet) -->
+            <div class="saturn-ring-wrapper">
+              <div class="saturn-ring-plane ring-back"></div>
+            </div>
+
+            <!-- The 3D Rotating Celestial Planet -->
+            <div class="celestial-planet-system">
+              <div class="celestial-planet">
+                <!-- Swirling animated atmospheric surface texture -->
+                <div class="planet-texture-surface"></div>
+                <!-- Swirling cloud vapor bands -->
+                <div class="planet-texture-clouds"></div>
+                <!-- Realistic spherical shadow terminator -->
+                <div class="planet-light-terminator"></div>
+                <!-- Atmospheric Aurora Shimmer (Polar light) -->
+                <div class="planet-polar-aurora"></div>
+                <!-- Specular Sun Starlight Glint -->
+                <div class="planet-specular-light"></div>
+                <!-- Cast Ring Shadow -->
+                <div class="planet-rings-shadow"></div>
+                <!-- Corona Haze -->
+                <div class="planet-atmosphere-glow"></div>
+              </div>
+            </div>
+
+            <!-- Elliptical Saturnian Rings (Front half, renders in front of planet) -->
+            <div class="saturn-ring-wrapper">
+              <div class="saturn-ring-plane ring-front"></div>
+            </div>
+
+            <!-- Smooth 3D Orbiting Satellites on Elliptical Paths -->
+            <div class="orbital-path-track track-1">
+              <div class="orbiting-probe probe-cad" title="SolidWorks 3D CAD (82%)">
+                <div class="probe-core"><span class="probe-tag">CAD</span></div>
+                <div class="probe-pulse"></div>
+              </div>
+            </div>
+
+            <div class="orbital-path-track track-2">
+              <div class="orbiting-probe probe-mcu" title="Arduino & Robotics (66%)">
+                <div class="probe-core"><span class="probe-tag">MCU</span></div>
+                <div class="probe-pulse"></div>
+              </div>
+            </div>
+
+            <div class="orbital-path-track track-3">
+              <div class="orbiting-probe probe-code" title="Python (70%) & MATLAB">
+                <div class="probe-core"><span class="probe-tag">CODE</span></div>
+                <div class="probe-pulse"></div>
+              </div>
+            </div>
+
+            <!-- Futuristic Holographic Telemetry HUD Chips -->
+            <div class="floating-hud-chip chip-top">
+              <span class="hud-dot green"></span>
+              <span class="hud-chip-text">ORBIT // MECHATRONICS & ME</span>
+            </div>
+            <div class="floating-hud-chip chip-bottom">
+              <span class="hud-chip-text">SYS_STATUS // ACTIVE 100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll ke Bawah">
+        <span class="scroll-text">SCROLL KE SEKTOR BERIKUTNYA</span>
+        <div class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ABOUT SECTION: Flight Log & Identity -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 02 // ABOUT ME</div>
+          <h2 class="section-title">Profil & Data Pribadi</h2>
+          <p class="section-subtitle">Mengenal lebih dekat Rihsal Syarif — dedikasi, produktivitas, dan daya adaptasi tinggi.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Hologram ID Badge with Real Photo -->
+          <div class="about-badge-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="badge-header">
+              <div class="badge-barcode"></div>
+              <div class="badge-id">ID: RIHSAL-SYARIF-PU</div>
+            </div>
+
+            <div class="astronaut-avatar-wrapper">
+              <div class="avatar-aura"></div>
+              <div class="avatar-hexagon">
+                <img src="assets/profile-rihsal.jpg" alt="Rihsal Syarif Photo" class="avatar-img" onerror="this.onerror=null; this.src='assets/extracted_2.jpg';">
+              </div>
+            </div>
+
+            <div class="badge-info">
+              <h3 class="badge-name">Rihsal Syarif</h3>
+              <p class="badge-role">Mechanical Engineering & Robotics</p>
+              
+              <div class="badge-tags">
+                <span class="badge-chip">⚙️ CAD & 3D Modeling</span>
+                <span class="badge-chip">🤖 Robotics & Arduino</span>
+                <span class="badge-chip">🎬 Short Film & Creative Direction</span>
+              </div>
+            </div>
+
+            <div class="badge-footer">
+              <div class="badge-signal-bars">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <span class="signal-status">STATUS: ACTIVE EXPLORER</span>
+            </div>
+          </div>
+
+          <!-- Log Content & Bio from PDF -->
+          <div class="about-story cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="story-terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">~/expedition/rihsal_profile.md</span>
+            </div>
+
+            <div class="story-body">
+              <h3 class="story-heading">
+                "I'm <span class="gradient-text">Rihsal Syarif</span>"
+              </h3>
+              
+              <p>
+                <strong>A good communicator who is friendly and able to adapt to various situations.</strong> Seeking employment opportunities to demonstrate dedication and professional competence. Recognized for high productivity and the ability to learn quickly.
+              </p>
+
+              <p>
+                Saat ini menempuh studi sarjana teknik di <strong>President University</strong> dalam program <em>Mechanical Engineering & Robotics</em>, saya menggabungkan dasar rekayasa mekanika yang kokoh, pemodelan 3D SolidWorks, perancangan sistem terbenam (Arduino & mikroprosesor), hingga keahlian komunikasi visual dan penyutradaraan kreatif.
+              </p>
+
+              <div class="mission-creeds">
+                <div class="creed-item">
+                  <div class="creed-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Adaptable Communicator</h4>
+                    <p>Ramah, fleksibel, dan mampu menyesuaikan gaya komunikasi untuk berbagai audiens dan situasi tim.</p>
+                  </div>
+                </div>
+
+                <div class="creed-item">
+                  <div class="creed-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>High Productivity & Fast Learner</h4>
+                    <p>Cepat memahami perangkat lunak baru, alur sistem rekayasa, dan siap memberikan output optimal.</p>
+                  </div>
+                </div>
+
+                <div class="creed-item">
+                  <div class="creed-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Innovative Problem Solver</h4>
+                    <p>Mampu mengembangkan solusi inovatif berdasarkan wawasan terkini dan analisis kebutuhan teknis di lapangan.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Mission Checklist -->
+              <div class="mission-traits">
+                <span class="trait-tag"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Mechanical Engineering</span>
+                <span class="trait-tag"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Robotics & Arduino</span>
+                <span class="trait-tag"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> SolidWorks 3D Modeling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- CV / RESUME SECTION: Official Institutional Credentials (PUIS) -->
+    <section class="section resume-section" id="resume">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 03 // OFFICIAL CV & RESUME</div>
+          <h2 class="section-title">Curriculum Vitae / Resume</h2>
+          <p class="section-subtitle">Dokumen resume akademik resmi dari President University — kredensial beasiswa, rekam jejak, dan data terverifikasi.</p>
+        </div>
+
+        <div class="resume-hub-grid">
+          <!-- Left: Comprehensive Quick Resume Summary Card -->
+          <div class="resume-summary-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+
+            <div class="resume-badge-header">
+              <div class="resume-status-badge">
+                <span class="status-radar-ping"></span>
+                <span class="status-dot"></span>
+                <span>OFFICIAL RESUME // PUIS VERIFIED</span>
+              </div>
+              <span class="resume-date-tag">STARDATE: 2026.308</span>
+            </div>
+
+            <h3 class="resume-candidate-name">Rihsal Syarif</h3>
+            <p class="resume-candidate-sub">Candidate for Sarjana Teknik (S.T.) • Mechanical Engineering & Robotics</p>
+
+            <!-- Key Academic & Leadership Badges -->
+            <div class="resume-highlight-pills">
+              <span class="resume-pill gold">⭐ Penerima Jababeka Scholarship</span>
+              <span class="resume-pill cyan">⚙️ President University S.T. Candidate</span>
+              <span class="resume-pill amber">🏆 Juara 1 FLS2N Prov & Kab</span>
+              <span class="resume-pill blue">🔧 Team Leader Shoe Dryer Project</span>
+            </div>
+
+            <!-- Verified Metadata Grid -->
+            <div class="resume-meta-list">
+              <div class="resume-meta-item">
+                <span class="meta-label">📍 Domisili / Lokasi</span>
+                <span class="meta-value">Bekasi, Jawa Barat, Indonesia</span>
+              </div>
+              <div class="resume-meta-item">
+                <span class="meta-label">📞 Kontak Telepon / WA</span>
+                <span class="meta-value">+62 852-4453-0238</span>
+              </div>
+              <div class="resume-meta-item">
+                <span class="meta-label">✉️ Email Resmi</span>
+                <span class="meta-value">rizalsyarif1502@gmail.com</span>
+              </div>
+              <div class="resume-meta-item">
+                <span class="meta-label">🔗 LinkedIn Profile</span>
+                <span class="meta-value">
+                  <a href="https://www.linkedin.com/in/rihsal-syarif-43169b335" target="_blank" rel="noopener noreferrer" class="link-glow">
+                    linkedin.com/in/rihsal-syarif-43169b335 ↗
+                  </a>
+                </span>
+              </div>
+            </div>
+
+            <!-- CTA Actions -->
+            <div class="resume-action-buttons">
+              <button onclick="openCvModal(event)" class="btn btn-primary-cosmic">
+                <span class="btn-glint"></span>
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Buka PDF di Layar Penuh</span>
+              </button>
+              
+              <a href="assets/cv/rihsal-syarif-resume.pdf" download="Resume_Rihsal_Syarif.pdf" class="btn btn-outline-glow">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Unduh File PDF</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/rihsal-syarif-43169b335" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
+                <span>Profil LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Embedded Interactive Live PDF Document Preview -->
+          <div class="resume-preview-frame-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+
+            <div class="preview-frame-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="frame-title">~/president_univ_puis/preuni_resume.pdf</span>
+              <a href="assets/cv/rihsal-syarif-resume.pdf" target="_blank" class="frame-expand-btn" title="Buka PDF di tab baru">↗</a>
+            </div>
+
+            <div class="resume-iframe-container">
+              <iframe src="assets/cv/rihsal-syarif-resume.pdf#toolbar=0&navpanes=0" class="resume-iframe" title="Rihsal Syarif Official Resume">
+                <p style="padding: 2rem; color: #fff;">Browser Anda tidak menampilkan iframe PDF secara langsung. <a href="assets/cv/rihsal-syarif-resume.pdf" target="_blank" style="color: var(--cosmic-cyan);">Klik di sini untuk membuka PDF</a>.</p>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & INSTITUTION SECTION: Dual Academic Tracks -->
+    <section class="section education-section" id="education">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 04 // EDUCATION & INSTITUTION</div>
+          <h2 class="section-title">Pendidikan & Institusi</h2>
+          <p class="section-subtitle">Fondasi akademik di perguruan tinggi rekayasa berstandar internasional dan kejuruan terapan.</p>
+        </div>
+
+        <div class="education-grid">
+          <!-- Card 1: President University (S1) -->
+          <div class="education-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+
+            <div class="edu-card-banner">
+              <img src="assets/president-univ.jpg" alt="President University Campus" class="edu-card-banner-img" onerror="this.onerror=null; this.src='assets/extracted_3.jpg';">
+              <div class="edu-banner-overlay">
+                <div class="edu-badges-row">
+                  <span class="edu-badge-level">HIGHER EDUCATION // S1</span>
+                  <span class="edu-badge-period">⏱️ Sep 2026 – Present</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-card-body">
+              <h3 class="edu-institution-title">President University</h3>
+              <h4 class="edu-degree-subtitle">Candidate for Sarjana Teknik (S.T.) — Mechanical Engineering & Robotics</h4>
+              <p class="edu-location-tag">📍 Jababeka Education Park, Cikarang, Jawa Barat, Indonesia</p>
+
+              <!-- Merit Box for Jababeka Scholarship -->
+              <div class="edu-merit-box scholarship">
+                <div class="edu-merit-title">
+                  <span>⭐ HONORS: JABABEKA SCHOLARSHIP RECIPIENT</span>
+                </div>
+                <p class="edu-merit-desc">
+                  Mendapatkan beasiswa prestasi penuh <strong>Jababeka Scholarship</strong> atas rekam jejak dedikasi, prestasi kejuaraan, dan potensi riset teknologi rekayasa mesin & robotika.
+                </p>
+              </div>
+
+              <!-- Academic Pillars -->
+              <div class="edu-pillars-list">
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>SolidWorks 3D CAD & Mechanical Assemblies</h5>
+                    <p>Pemodelan mekanikal presisi, toleransi gambar teknik, dan kesiapan manufaktur prototipe fisik.</p>
+                  </div>
+                </div>
+
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>Robotics, Embedded Systems & Microcontrollers</h5>
+                    <p>Pemrograman mikrokontroler Arduino, integrasi sensor aktuator, dan logika otomatisasi interaktif.</p>
+                  </div>
+                </div>
+
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>Scientific Computing & Physical Simulations</h5>
+                    <p>Analisis kalkulasi numerik dan pemodelan sistem dinamis berbasis Python dan MathWorks MATLAB.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: SMK Negeri 1 Nabire (Diploma) -->
+          <div class="education-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+
+            <div class="edu-card-banner">
+              <div class="edu-banner-blueprint"></div>
+              <div class="edu-banner-overlay">
+                <div class="edu-badges-row">
+                  <span class="edu-badge-level">HIGH SCHOOL DIPLOMA // KEJURUAN</span>
+                  <span class="edu-badge-period">⏱️ Jul 2022 – May 2025</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-card-body">
+              <h3 class="edu-institution-title">SMK Negeri 1 Nabire</h3>
+              <h4 class="edu-degree-subtitle">High School Diploma — Desain Komunikasi Visual (DKV) & Agroteknologi</h4>
+              <p class="edu-location-tag">📍 Nabire, Provinsi Papua Tengah, Indonesia</p>
+
+              <!-- Merit Box for FLS2N & PORTAL DKV -->
+              <div class="edu-merit-box">
+                <div class="edu-merit-title">
+                  <span>🏆 AWARDS & ACTIVITIES: JUARA 1 FLS2N & PORTAL DKV</span>
+                </div>
+                <p class="edu-merit-desc">
+                  Meraih <strong>Juara 1 Tingkat Kabupaten</strong> & <strong>Juara 1 Tingkat Provinsi Papua Tengah</strong> pada FLS2N 2024 kategori Film Pendek. Aktif dalam organisasi kreatif <strong>PORTAL DKV</strong>.
+                </p>
+              </div>
+
+              <!-- Practical Pillars -->
+              <div class="edu-pillars-list">
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>Creative Direction, Film & Storyboard</h5>
+                    <p>Kepemimpinan penyutradaraan, perancangan storyboard, dan manajemen sinematografi kreatif.</p>
+                  </div>
+                </div>
+
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>Digital Graphics, Photoshop & Illustrator</h5>
+                    <p>Kemahiran manipulasi grafis bitmap dan vektor untuk identitas visual dan media publikasi.</p>
+                  </div>
+                </div>
+
+                <div class="edu-pillar-item">
+                  <div class="edu-pillar-dot"></div>
+                  <div class="edu-pillar-content">
+                    <h5>Industry Internship (PKL Percetakan Dunia Colour)</h5>
+                    <p>Praktik kerja lapangan 6 bulan dalam industri percetakan: pra-cetak, separasi warna, dan produksi fisik.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & ACHIEVEMENTS SECTION (From PDF Page 4) -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 05 // EXPERIENCE & ACHIEVEMENTS</div>
+          <h2 class="section-title">Pengalaman Kerja & Prestasi</h2>
+          <p class="section-subtitle">Rekam jejak profesional dalam industri serta penghargaan juara tingkat wilayah dan provinsi.</p>
+        </div>
+
+        <!-- 3-Column Experience Grid (1, 2, 3 as in PDF) -->
+        <div class="experience-cards-grid">
+          
+          <!-- Block 1: Internship -->
+          <div class="experience-block-card cosmic-card reveal-on-scroll" onclick="openPklCertModal()" style="cursor: pointer;" title="Klik untuk melihat Surat Keterangan / Sertifikat PKL Dunia Colour">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="exp-big-number">1</div>
+            <h3 class="exp-block-title">Internship at Dunia Color Printing</h3>
+            <span class="exp-block-meta">📅 July 2024 – December 2024 (Nabire)</span>
+            
+            <ul class="exp-bullet-list">
+              <li>Operate the software or systems used in the job.</li>
+              <li>Ensure that work results remain optimal and activities run effectively.</li>
+              <li>Adapt communication styles to suit different audiences.</li>
+              <li>Develop innovative solutions based on the latest insights and learnings.</li>
+            </ul>
+
+            <button type="button" class="btn-view-fls2n" onclick="openPklCertModal(event)" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: var(--cosmic-cyan); margin-top: 1rem;">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              <span>Lihat Surat Keterangan PKL</span>
+            </button>
+          </div>
+
+          <!-- Block 2: 1st Place Provincial -->
+          <div class="experience-block-card cosmic-card reveal-on-scroll" onclick="openFls2nCertModal('provinsi')" style="cursor: pointer;" title="Klik untuk melihat Sertifikat Juara 1 FLS2N Provinsi">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="exp-big-number">2</div>
+            <div class="award-trophy-badge">🏆 1ST PLACE WINNER</div>
+            <h3 class="exp-block-title">2024 FLS2N Provincial Competition</h3>
+            <span class="exp-block-meta">🎬 Short Film Category (Tingkat Provinsi Papua Tengah)</span>
+            
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.5rem; flex: 1;">
+              Berhasil meraih <strong>Juara 1 Tingkat Provinsi</strong> dalam Festival & Lomba Seni Siswa Nasional (FLS2N) 2024 kategori Film Pendek jenjang SMK di Timika, Papua Tengah.
+            </p>
+
+            <button type="button" class="btn-view-fls2n" onclick="openFls2nCertModal('provinsi', event)">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+              <span>Lihat Sertifikat Juara 1 Provinsi</span>
+            </button>
+          </div>
+
+          <!-- Block 3: 1st Place District -->
+          <div class="experience-block-card cosmic-card reveal-on-scroll" onclick="openFls2nCertModal('kabupaten')" style="cursor: pointer;" title="Klik untuk melihat Sertifikat Juara 1 FLS2N Kabupaten">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="exp-big-number">3</div>
+            <div class="award-trophy-badge">🏆 1ST PLACE WINNER</div>
+            <h3 class="exp-block-title">2024 District-Level FLS2N Competition</h3>
+            <span class="exp-block-meta">🎬 Short Film Category (Tingkat Kabupaten Nabire)</span>
+            
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.5rem; flex: 1;">
+              Berhasil meraih <strong>Juara 1 Tingkat Kabupaten / Kota</strong> dalam kompetisi FLS2N 2024 jenjang SMK yang diselenggarakan oleh Dinas Pendidikan Kabupaten Nabire.
+            </p>
+
+            <button type="button" class="btn-view-fls2n" onclick="openFls2nCertModal('kabupaten', event)">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+              <span>Lihat Sertifikat Juara 1 Kabupaten</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION (From PDF Page 6) -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 06 // TECHNICAL SKILLS</div>
+          <h2 class="section-title">Konstelasi Keahlian Teknik</h2>
+          <p class="section-subtitle">Keahlian rekayasa, software perancangan 3D, pemrograman mikrokontroler, dan desain grafis.</p>
+        </div>
+
+        <div class="skills-categories-grid">
+          <!-- Skill Category 1: CAD & 3D Modeling -->
+          <div class="skill-category-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="category-header">
+              <div class="category-icon-orb orb-cyan">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="category-title">CAD & 3D Modeling</h3>
+                <span class="category-subtitle">SolidWorks & Desain Mekanikal</span>
+              </div>
+            </div>
+
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">SolidWorks (Part & Assembly)</span>
+                  <span class="skill-pct">82%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-cyan" style="width: 82%"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Technical Drawing (Gambar Teknik)</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-cyan" style="width: 88%"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">3D CAD Prototyping</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-cyan" style="width: 85%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Category 2: Programming & Software -->
+          <div class="skill-category-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="category-header">
+              <div class="category-icon-orb orb-purple">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="category-title">Programming & Software</h3>
+                <span class="category-subtitle">Arduino, Python & MATLAB</span>
+              </div>
+            </div>
+
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Arduino IDE & Microcontrollers</span>
+                  <span class="skill-pct">66%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-purple" style="width: 66%"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Basic Python</span>
+                  <span class="skill-pct">70%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-purple" style="width: 70%"></div></div>
+              </div>
+
+              <div class="skill-item clickable-skill-item" onclick="openMatlabCertModal()" title="Klik untuk membuka 5 Sertifikat Resmi MathWorks">
+                <div class="skill-info">
+                  <span class="skill-name">
+                    MATLAB & Simulink
+                    <span class="cert-pulse-pill"><span class="pulse-dot-sm"></span> 5 Sertifikat MathWorks</span>
+                  </span>
+                  <span class="skill-pct">100% Certified</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-purple" style="width: 100%"></div></div>
+                <button type="button" class="btn-view-cert" onclick="openMatlabCertModal(event)">
+                  <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" fill="none" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                  <span>Lihat 5 Sertifikat Resmi MathWorks (Klik Disini)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Category 3: Design Graphic & Media -->
+          <div class="skill-category-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="category-header">
+              <div class="category-icon-orb orb-pink">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                  <line x1="7" y1="2" x2="7" y2="22"></line>
+                  <line x1="17" y1="2" x2="17" y2="22"></line>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <line x1="2" y1="7" x2="7" y2="7"></line>
+                  <line x1="2" y1="17" x2="7" y2="17"></line>
+                  <line x1="17" y1="17" x2="22" y2="17"></line>
+                  <line x1="17" y1="7" x2="22" y2="7"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="category-title">Design Graphic & Media</h3>
+                <span class="category-subtitle">Photoshop, Illustrator & Film</span>
+              </div>
+            </div>
+
+            <div class="skill-items-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Adobe Photoshop</span>
+                  <span class="skill-pct">52%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-pink" style="width: 52%"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Adobe Illustrator</span>
+                  <span class="skill-pct">57%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-pink" style="width: 57%"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Short Film Direction & Storyboard</span>
+                  <span class="skill-pct">92%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill fill-pink" style="width: 92%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Badge Pill Marquee / Orbit Badges -->
+        <div class="tech-badges-grid">
+          <div class="tech-pill"><span>⚙️ SolidWorks</span></div>
+          <div class="tech-pill"><span>⚡ Arduino IDE</span></div>
+          <div class="tech-pill"><span>🐍 Python</span></div>
+          <div class="tech-pill clickable-pill" onclick="openMatlabCertModal()" title="Klik untuk melihat 5 Sertifikat Resmi MathWorks"><span>📜 5 Sertifikat MathWorks (MATLAB & Simulink)</span></div>
+          <div class="tech-pill"><span>📐 Technical Drawing</span></div>
+          <div class="tech-pill"><span>🎨 Adobe Photoshop</span></div>
+          <div class="tech-pill"><span>🖋️ Adobe Illustrator</span></div>
+          <div class="tech-pill"><span>🎬 FLS2N Champion</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION: Featured Missions & Works -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 07 // PROJECTS & MISSIONS</div>
+          <h2 class="section-title">Koleksi Misi & Proyek</h2>
+          <p class="section-subtitle">Proyek rekayasa mekanika, sistem robotika cerdas, dan kreasi film pemenang penghargaan.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">Semua Misi</button>
+          <button class="filter-btn" data-filter="cad">CAD / 3D Modeling</button>
+          <button class="filter-btn" data-filter="robotics">Robotics & Arduino</button>
+          <button class="filter-btn" data-filter="film">Film & Creative</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-container">
+          
+          <!-- Project 1: SolidWorks CAD Stake Bed Pickup Truck -->
+          <article class="project-card cosmic-card reveal-on-scroll" data-category="cad">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="project-thumbnail-wrapper">
+              <div class="project-canvas-preview preview-nebula">
+                <div class="preview-overlay-info">
+                  <span class="mission-status-chip">CAD 3D MODEL</span>
+                </div>
+                <div class="mockup-screen">
+                  <div class="screen-header">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="screen-body screen-code">
+                    <p class="code-line"><span class="c-purple">// SOLIDWORKS PART FILE</span></p>
+                    <p class="code-line">Stake Bed Pickup Truck.SLDPRT</p>
+                    <p class="code-line"><span class="c-green">✓ Precision Assembly Verified</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-mission-id">MISI #01</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">Stake Bed Pickup Truck - 3D CAD Mechanical Assembly</h3>
+              <p class="project-summary">
+                Pemodelan 3D komponen mekanikal lengkap untuk kendaraan truk bak terbuka (Stake Bed) menggunakan SolidWorks dengan presisi toleransi gambar teknik.
+              </p>
+              
+              <div class="project-tech-stack">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">3D CAD</span>
+                <span class="tag">Technical Drawing</span>
+                <span class="tag">Mechanical Assembly</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn-action-view" onclick="openProjectModal('truck_cad')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Detail Misi</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Robot Eyes Keychain & Embedded Systems -->
+          <article class="project-card cosmic-card reveal-on-scroll" data-category="robotics">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="project-thumbnail-wrapper">
+              <div class="project-canvas-preview preview-pulsar">
+                <div class="preview-overlay-info">
+                  <span class="mission-status-chip">ARDUINO / MCU</span>
+                </div>
+                <div class="mockup-screen">
+                  <div class="screen-header">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="screen-body screen-ai">
+                    <div class="pulsing-core"></div>
+                    <p class="ai-text">ROBOT_EYES.INO // Active Display Animation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-mission-id">MISI #02</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">Interactive Robot Eyes Embedded System</h3>
+              <p class="project-summary">
+                Sistem mikrokontroler interaktif berbasis Arduino yang menggerakkan visual animasi mata robotik dinamis dengan efisiensi konsumsi daya portabel.
+              </p>
+              
+              <div class="project-tech-stack">
+                <span class="tag">Arduino IDE</span>
+                <span class="tag">C / C++</span>
+                <span class="tag">OLED / Matrix</span>
+                <span class="tag">Hardware Prototyping</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn-action-view" onclick="openProjectModal('robot_eyes')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Detail Misi</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Short Film 2024 (1st Place FLS2N) -->
+          <article class="project-card cosmic-card reveal-on-scroll" data-category="film">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="project-thumbnail-wrapper">
+              <div class="project-canvas-preview preview-aurora">
+                <div class="preview-overlay-info">
+                  <span class="mission-status-chip">JUARA 1 FLS2N</span>
+                </div>
+                <div class="mockup-screen">
+                  <div class="screen-header">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="screen-body screen-dashboard">
+                    <div class="dash-bar b1"></div>
+                    <div class="dash-bar b2"></div>
+                    <div class="dash-bar b3"></div>
+                    <div class="dash-bar b4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-mission-id">MISI #03</span>
+                <span class="project-year">2024</span>
+              </div>
+              <h3 class="project-title">Juara 1 FLS2N: Produksi Film Pendek Kreatif</h3>
+              <p class="project-summary">
+                Karya film pendek berprestasi yang memenangkan Juara 1 Tingkat Kabupaten dan Juara 1 Tingkat Provinsi dalam FLS2N 2024 dengan visualisasi cerita yang mendalam.
+              </p>
+              
+              <div class="project-tech-stack">
+                <span class="tag">Short Film</span>
+                <span class="tag">Directing</span>
+                <span class="tag">Cinematography</span>
+                <span class="tag">Adobe Premiere / PS</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn-action-view" onclick="openProjectModal('fls2n_film')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Detail Misi</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Economic Survival Project: Shoe Dryer (Team Leader) -->
+          <article class="project-card cosmic-card reveal-on-scroll" data-category="cad">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            <div class="project-thumbnail-wrapper">
+              <div class="project-canvas-preview preview-nebula">
+                <div class="preview-overlay-info">
+                  <span class="mission-status-chip">PRODUCT DESIGN // TEAM LEADER</span>
+                </div>
+                <div class="mockup-screen">
+                  <div class="screen-header">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="screen-body screen-code">
+                    <p class="code-line"><span class="c-purple">// PRESIDENT UNIVERSITY PROJECT</span></p>
+                    <p class="code-line">Economic Survival: Shoe Dryer</p>
+                    <p class="code-line"><span class="c-green">✓ Product Ideation & 3D Engineering</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
+              <div class="project-meta">
+                <span class="project-mission-id">MISI #04</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">Economic Survival Project: Shoe Dryer</h3>
+              <p class="project-summary">
+                Bertindak sebagai Team Leader dalam perumusan ide, perancangan mekanikal produk (product design), dan identifikasi kendala teknis (issue analysis) di President University.
+              </p>
+              
+              <div class="project-tech-stack">
+                <span class="tag">Team Leader</span>
+                <span class="tag">Product Design</span>
+                <span class="tag">Mechanical Engineering</span>
+                <span class="tag">Problem Solving</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn-action-view" onclick="openProjectModal('shoe_dryer')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Detail Misi</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION: Interstellar Signal Transmitter & Get In Touch (PDF Page 7) -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal-on-scroll text-center">
+          <div class="section-tag"><span class="tag-dot"></span> SEKTOR 08 // GET IN TOUCH</div>
+          <h2 class="section-title">Hubungi Rihsal Syarif</h2>
+          <p class="section-subtitle">Terbuka untuk kesempatan kerja, kolaborasi riset rekayasa, dan proyek pengembangan inovatif.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Radar Contact Card -->
+          <div class="contact-radar-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            
+            <div class="radar-hud-header">
+              <div class="radar-circle-visual">
+                <div class="radar-sweep"></div>
+                <div class="radar-blip b-1"></div>
+                <div class="radar-blip b-2"></div>
+                <div class="radar-center-cross"></div>
+              </div>
+              <div>
+                <h3 class="radar-title">Stasiun Komunikasi Terbuka</h3>
+                <p class="radar-frequency">FREKUENSI: RIHSAL SYARIF TRANSMITTER</p>
+              </div>
+            </div>
+
+            <div class="contact-channels">
+              <a href="mailto:rizalsyarif1502@gmail.com" class="channel-item">
+                <div class="channel-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-label">Email Transmisi</span>
+                  <span class="channel-val">rizalsyarif1502@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="tel:+6285244530238" class="channel-item">
+                <div class="channel-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-label">Phone / WhatsApp Number</span>
+                  <span class="channel-val">+6285244530238</span>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="channel-item">
+                <div class="channel-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-label">LinkedIn Profile</span>
+                  <span class="channel-val">Rihsal Syarif</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="station-coordinates">
+              <span class="coord-label">INSTITUSI:</span>
+              <span class="coord-val">President University, Cikarang, Indonesia</span>
+            </div>
+          </div>
+
+          <!-- Transmission Contact Form -->
+          <div class="contact-form-card cosmic-card reveal-on-scroll">
+            <div class="card-glow-layer"></div>
+            <div class="border-beam"></div>
+            
+            <form id="transmission-form" class="transmission-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pilot-name">Nama Pengirim / Perusahaan <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="text" id="pilot-name" name="name" placeholder="Contoh: Tim HR / Rekan Rekayasa" required>
+                    <span class="input-glow"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="pilot-email">Email Balasan <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="email" id="pilot-email" name="email" placeholder="company@domain.com" required>
+                    <span class="input-glow"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mission-subject">Tujuan Pesan / Tawaran Peluang <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <input type="text" id="mission-subject" name="subject" placeholder="Peluang Kerja / Proyek SolidWorks / Proyek Robotika" required>
+                  <span class="input-glow"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mission-message">Isi Pesan <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <textarea id="mission-message" name="message" rows="5" placeholder="Tuliskan pesan Anda kepada Rihsal Syarif di sini..." required></textarea>
+                  <span class="input-glow"></span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary-cosmic btn-submit" id="btn-transmit">
+                <span class="btn-glint"></span>
+                <span class="btn-text">Kirim Sinyal Pesan</span>
+                <svg class="transmit-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <div id="transmission-alert" class="transmission-alert hidden">
+                <span class="alert-icon">✨</span>
+                <span class="alert-text">Pesan berhasil dikirim! Rihsal Syarif akan segera merespons sinyal Anda.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- COSMIC FOOTER (PDF Page 8: Thank You) -->
+  <footer class="cosmic-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-text">RIHSAL<span class="gradient-text">.SYARIF</span></span>
+        </a>
+        <p class="footer-tagline">
+          Thank you for exploring this space. Mechanical Engineering & Robotics • President University.
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <div class="social-links">
+          <a href="mailto:rizalsyarif1502@gmail.com" aria-label="Email" class="social-link" title="Email Rihsal">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="tel:+6285244530238" aria-label="Phone" class="social-link" title="Telepon / WA">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/rihsal-syarif-43169b335" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link" title="LinkedIn Rihsal Syarif">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+        <p class="copyright">
+          &copy; <span id="current-year">2026</span> Rihsal Syarif. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-backdrop hidden" id="project-modal">
+    <div class="modal-cosmic-card cosmic-card">
+      <button class="modal-close-btn" id="modal-close" aria-label="Tutup Jendela Modal">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-body" id="modal-body-content">
+        <!-- Content will be dynamically populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CV / RESUME MODAL VIEWER -->
+  <div class="modal-backdrop hidden" id="cv-modal">
+    <div class="modal-cosmic-card cert-modal-card cosmic-card">
+      <button class="modal-close-btn" id="cv-modal-close" aria-label="Tutup Jendela Resume">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="cert-modal-header">
+        <div class="cert-modal-badge">
+          <span>📄 PRESIDENT UNIVERSITY PUIS // OFFICIAL ACADEMIC RESUME</span>
+        </div>
+        <h3 class="cert-modal-title">Curriculum Vitae / Resume — Rihsal Syarif</h3>
+        <p class="cert-modal-sub">Candidate for Sarjana Teknik (S.T.) • <strong>Penerima Jababeka Scholarship</strong></p>
+      </div>
+
+      <div class="cert-display-container">
+        <!-- PDF Frame Display -->
+        <div class="cert-frame-wrapper" style="height: 540px;">
+          <iframe src="assets/cv/rihsal-syarif-resume.pdf#toolbar=1&navpanes=0" class="cert-iframe" title="Rihsal Syarif Resume PDF">
+            <p style="padding: 2rem; color: #fff;">Browser Anda tidak mendukung preview PDF langsung. <a href="assets/cv/rihsal-syarif-resume.pdf" target="_blank" style="color: var(--cosmic-cyan);">Klik di sini untuk membuka PDF</a>.</p>
+          </iframe>
+        </div>
+
+        <!-- Details & Action Buttons -->
+        <div class="cert-actions-bar">
+          <div class="cert-meta-info">
+            <h4 class="cert-meta-title">Rihsal Syarif (Mechanical Engineering & Robotics)</h4>
+            <span class="cert-meta-date">⭐ Jababeka Scholar • GPA 4.00 Scale • Bekasi, Jawa Barat</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem; max-width: 650px;">
+              Dokumen kurikulum vitae resmi dari President University Information System (PUIS). Menampilkan riwayat beasiswa, kepemimpinan proyek, dan prestasi FLS2N.
+            </p>
+          </div>
+
+          <div class="cert-buttons-group">
+            <a href="assets/cv/rihsal-syarif-resume.pdf" download="Resume_Rihsal_Syarif.pdf" class="btn btn-primary-cosmic btn-sm">
+              <span>Unduh File PDF Resmi</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/rihsal-syarif-43169b335" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-sm">
+              <span>Buka Profil LinkedIn</span>
+            </a>
+            <button class="btn btn-glass btn-sm" onclick="document.getElementById('cv-modal').classList.add('hidden')">
+              <span>Tutup</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATLAB & MATHWORKS CERTIFICATES MODAL VIEWER -->
+  <div class="modal-backdrop hidden" id="matlab-cert-modal">
+    <div class="modal-cosmic-card cert-modal-card cosmic-card">
+      <button class="modal-close-btn" id="cert-modal-close" aria-label="Tutup Jendela Sertifikat">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="cert-modal-header">
+        <div class="cert-modal-badge">
+          <span>🏅 MATHWORKS TRAINING SERVICES VERIFIED</span>
+        </div>
+        <h3 class="cert-modal-title">MathWorks Course Completion Certificates</h3>
+        <p class="cert-modal-sub">Diberikan kepada: <strong>Rihsal Syarif</strong> • 100% Selesai</p>
+      </div>
+
+      <!-- Tabs Bar for Selecting Certificate -->
+      <div class="cert-tabs-bar" id="cert-tabs">
+        <button class="cert-tab-btn active" data-cert="matlab">
+          <span>📊 MATLAB Onramp</span>
+        </button>
+        <button class="cert-tab-btn" data-cert="ml">
+          <span>🤖 Machine Learning</span>
+        </button>
+        <button class="cert-tab-btn" data-cert="simulink">
+          <span>⚡ Simulink Onramp</span>
+        </button>
+        <button class="cert-tab-btn" data-cert="simscape">
+          <span>⚙️ Simscape Onramp</span>
+        </button>
+        <button class="cert-tab-btn" data-cert="multibody">
+          <span>🦾 Multibody Simulation</span>
+        </button>
+      </div>
+
+      <!-- Certificate Active Preview Container -->
+      <div class="cert-display-container" id="cert-display-area">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FLS2N CERTIFICATES MODAL VIEWER -->
+  <div class="modal-backdrop hidden" id="fls2n-cert-modal">
+    <div class="modal-cosmic-card cert-modal-card cosmic-card">
+      <button class="modal-close-btn" id="fls2n-modal-close" aria-label="Tutup Jendela Sertifikat FLS2N">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="cert-modal-header">
+        <div class="cert-modal-badge" style="background: rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4); color: var(--cosmic-amber);">
+          <span>🏆 FLS2N 2024 JUARA 1 PIAGAM PENGHARGAAN RESMI</span>
+        </div>
+        <h3 class="cert-modal-title">Sertifikat Juara 1 FLS2N Film Pendek</h3>
+        <p class="cert-modal-sub">Diberikan kepada: <strong>Rihsal Syarif (SMK Negeri 1 Nabire)</strong></p>
+      </div>
+
+      <!-- Tabs Bar for Selecting FLS2N Certificate -->
+      <div class="cert-tabs-bar" id="fls2n-tabs">
+        <button class="cert-tab-btn active" data-cert="provinsi">
+          <span>🏆 Juara 1 Tingkat Provinsi (Papua Tengah)</span>
+        </button>
+        <button class="cert-tab-btn" data-cert="kabupaten">
+          <span>🥇 Juara 1 Tingkat Kabupaten (Nabire)</span>
+        </button>
+      </div>
+
+      <!-- Certificate Active Preview Container -->
+      <div class="cert-display-container" id="fls2n-display-area">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PKL CERTIFICATE MODAL VIEWER -->
+  <div class="modal-backdrop hidden" id="pkl-cert-modal">
+    <div class="modal-cosmic-card cert-modal-card cosmic-card">
+      <button class="modal-close-btn" id="pkl-modal-close" aria-label="Tutup Jendela Sertifikat PKL">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="cert-modal-header">
+        <div class="cert-modal-badge" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: var(--cosmic-cyan);">
+          <span>📄 SURAT KETERANGAN RESMI PRAKTIK KERJA LAPANGAN (PKL)</span>
+        </div>
+        <h3 class="cert-modal-title">Surat Keterangan PKL - Percetakan Dunia Colour</h3>
+        <p class="cert-modal-sub">Diberikan kepada: <strong>Rizal Syarif</strong> • SMK Negeri 1 Agribisnis Dan Agroteknologi Nabire</p>
+      </div>
+
+      <!-- Certificate Preview Container -->
+      <div class="cert-display-container">
+        <div class="cert-image-wrapper">
+          <a href="assets/certificates/sertifikat-pkl.jpg" target="_blank" title="Klik untuk membuka ukuran penuh di tab baru">
+            <img id="pkl-cert-img" src="assets/certificates/sertifikat-pkl.jpg" alt="Surat Keterangan PKL Dunia Colour" class="fls2n-img-full" style="transition: transform 0.4s ease;">
+          </a>
+        </div>
+
+        <!-- Details & Action Buttons -->
+        <div class="cert-actions-bar">
+          <div class="cert-meta-info">
+            <h4 class="cert-meta-title">Praktik Kerja Lapangan di Percetakan Dunia Colour</h4>
+            <span class="cert-meta-date" style="color: var(--cosmic-cyan); font-weight: 700;">📅 Periode: 15 Juli s/d 15 Desember 2024 • Nabire, Papua Tengah</span>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.35rem; max-width: 650px; line-height: 1.55;">
+              Surat keterangan bukti resmi telah melaksanakan Praktik Kerja Lapangan (PKL) dengan konsentrasi keahlian <strong>Desain Komunikasi Visual (DKV)</strong>.
+            </p>
+            <div style="font-family: var(--font-tech); font-size: 0.82rem; color: #fff; margin-top: 0.4rem;">
+              <div>🏢 <strong>Instansi</strong>: Percetakan Dunia Colour Nabire</div>
+              <div style="color: var(--cosmic-amber); margin-top: 3px;">✍️ <strong>Pemimpin Perusahaan</strong>: Asriadi Palladjareng S.Kom., M.Pd.</div>
+            </div>
+          </div>
+
+          <div class="cert-buttons-group">
+            <button type="button" class="btn btn-outline-glow btn-sm" id="btn-toggle-pkl-rotate" onclick="togglePklRotation()">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+              </svg>
+              <span id="pkl-rotate-label">Putar Orientasi</span>
+            </button>
+            <a href="assets/certificates/sertifikat-pkl.jpg" id="pkl-full-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary-cosmic btn-sm">
+              <span>Lihat Gambar Penuh</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <button class="btn btn-glass btn-sm" onclick="document.getElementById('pkl-cert-modal').classList.add('hidden')">
+              <span>Tutup</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Engine -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
